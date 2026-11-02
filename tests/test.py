@@ -5,7 +5,7 @@ import sqlite3
 import tempfile
 
 import bottle
-from bottle.ext import sqlite
+from bottle_sqlite3 import SQLitePlugin
 
 ''' python3 moves unicode to str '''
 try:
@@ -19,7 +19,7 @@ class SQLiteTest(unittest.TestCase):
     def setUp(self):
         self.app = bottle.Bottle(catchall=False)
         _, dbfile = tempfile.mkstemp(suffix='.sqlite')
-        self.plugin = self.app.install(sqlite.Plugin(dbfile=dbfile))
+        self.plugin = self.app.install(SQLitePlugin(dbfile=dbfile))
 
         self.conn = sqlite3.connect(dbfile)
         self.conn.execute("CREATE TABLE todo (id INTEGER PRIMARY KEY, task char(100) NOT NULL)")
@@ -46,7 +46,7 @@ class SQLiteTest(unittest.TestCase):
         self._request('/2')
 
     def test_install_conflicts(self):
-        self.app.install(sqlite.Plugin(keyword='db2'))
+        self.app.install(SQLitePlugin(keyword='db2'))
 
         @self.app.get('/')
         def test(db, db2):
@@ -58,7 +58,7 @@ class SQLiteTest(unittest.TestCase):
     def test_text_factory(self):
         # set text factory to str, unicode (default) would cause 
         # PrammingError: You must not use 8-bit bytestrings .. exception
-        self.app.install(sqlite.Plugin(keyword='db2',text_factory=str))
+        self.app.install(SQLitePlugin(keyword='db2',text_factory=str))
 
         @self.app.get('/')
         def test(db, db2):
@@ -71,7 +71,7 @@ class SQLiteTest(unittest.TestCase):
         self._request('/')
 
     def test_text_factory_fail(self):
-        self.app.install(sqlite.Plugin(keyword='db3',text_factory=unicode))
+        self.app.install(SQLitePlugin(keyword='db3',text_factory=unicode))
 
         @self.app.get('/')
         def test(db, db3):
