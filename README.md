@@ -1,5 +1,7 @@
 # bottle-sqlite3
 
+[![test](https://github.com/hamukazu/bottle-sqlite3/actions/workflows/test.yml/badge.svg)](https://github.com/hamukazu/bottle-sqlite3/actions/workflows/test.yml)
+
 This is a fork of Bottle-SQLite.
 
 SQLite is a self-contained SQL database engine that runs locally and does not
