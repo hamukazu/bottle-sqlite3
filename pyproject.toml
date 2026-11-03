@@ -20,3 +20,6 @@ dev = [
     "pytest>=9.2.0",
     "tox>=4.67.5",
 ]
+
+[tool.pytest.ini_options]
+python_files = ["test.py", "test_*.py", "*_test.py"]
