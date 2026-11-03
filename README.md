@@ -1,6 +1,6 @@
 # bottle-sqlite3
 
-[![test](https://github.com/hamukazu/bottle-sqlite3/actions/workflows/test.yml/badge.svg)](https://github.com/hamukazu/bottle-sqlite3/actions/workflows/test.yml)
+[![ci](https://github.com/hamukazu/bottle-sqlite3/actions/workflows/ci.yml/badge.svg)](https://github.com/hamukazu/bottle-sqlite3/actions/workflows/ci.yml)
 
 This is a fork of Bottle-SQLite.
 
