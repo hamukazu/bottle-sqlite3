@@ -97,7 +97,4 @@ def cache(item, cache):
 
 ## Changelog
 
-* **0.2** 2020-10-03
-    * Fixed `text_factory` parameter.
-    * Added `functions`, `aggregates`, `collations` and `extensions` parameters.
-    * Stopped testing for dead Python versions.
+* **0.1** Initial release as `bottle-sqlite3` plugin.
