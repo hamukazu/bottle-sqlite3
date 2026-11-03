@@ -16,14 +16,12 @@ Once installed, all you have to do is to add a `db` keyword argument
 
 Install with one of the following commands:
 
-    $ pip install bottle-sqlite
-    $ easy_install bottle-sqlite
+    $ pip install bottle-sqlite3
+    $ easy_install bottle-sqlite3
 
-or download the latest version from github:
+or install the latest version directly from github:
 
-    $ git clone git://github.com/bottlepy/bottle-sqlite.git
-    $ cd bottle-sqlite
-    $ python setup.py install
+    $ pip install git+https://github.com/hamukazu/bottle-sqlite3
 
 ## Usage
 
@@ -33,9 +31,10 @@ argument:
 
 ```python
 import bottle
+from bottle_sqlite3 import SQLitePlugin
 
 app = bottle.Bottle()
-plugin = bottle.ext.sqlite.Plugin(dbfile='/tmp/test.db')
+plugin = SQLitePlugin(dbfile='/tmp/test.db')
 app.install(plugin)
 
 @app.route('/show/:item')
@@ -80,8 +79,8 @@ or install two plugins with different `keyword` settings to the same application
 
 ```python
 app = bottle.Bottle()
-test_db = bottle.ext.sqlite.Plugin(dbfile='/tmp/test.db')
-cache_db = bottle.ext.sqlite.Plugin(dbfile=':memory:', keyword='cache')
+test_db = SQLitePlugin(dbfile='/tmp/test.db')
+cache_db = SQLitePlugin(dbfile=':memory:', keyword='cache')
 app.install(test_db)
 app.install(cache_db)
 
